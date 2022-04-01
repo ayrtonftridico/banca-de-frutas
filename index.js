@@ -1,27 +1,27 @@
 const express = require ('express');
 
-const server = express();
+const app = express();
 
-server.use(express.json());
+app.use(express.json());
 
 const frutas = ['Maçã', 'Banana', 'Uva'];
 
 // Retorna listagem de frutas
-server.get('/frutas', (req, res) => {
+app.get('/frutas', (req, res) => {
     const { index } = req.params;
 
     return res.json(frutas);
 });
 
 // Retorna fruta em específico, de acordo com a posição no array
-server.get('/frutas/:index', (req, res) => {
+app.get('/frutas/:index', (req, res) => {
     const { index } = req.params;
 
     return res.json(frutas[index]);
 });
 
 // Adiciona uma nova fruta utilizando formato JSON
-server.post('/frutas', (req, res) => {
+app.post('/frutas', (req, res) => {
     const { name } = req.body;
     cursos.push(name);
 
@@ -29,7 +29,7 @@ server.post('/frutas', (req, res) => {
 });
 
 // Alterar o nome de uma fruta ja existente
-server.put('/frutas/:index', (req, res) => {
+app.put('/frutas/:index', (req, res) => {
     const { name } = req.body;
     const { index } = req.params;
 
@@ -37,7 +37,7 @@ server.put('/frutas/:index', (req, res) => {
 });
 
 //Deletar uma fruta
-server.delete('/frutas/:index', (req, res) => {
+app.delete('/frutas/:index', (req, res) => {
     const { index } = req.params;
 
     cursos.splice(index, 1);
@@ -45,4 +45,4 @@ server.delete('/frutas/:index', (req, res) => {
 });
 
 // Porta utilizada no localhost
-server.listen(3000); 
+app.listen(3000); 
